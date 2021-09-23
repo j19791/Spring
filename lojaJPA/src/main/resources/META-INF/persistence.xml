@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+    xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+	<persistence-unit name="lojaJPA" transaction-type="RESOURCE_LOCAL"><!-- usar JTA qdo usar usar servidor de app -->
+
+	<!-- configurações da app -uma persistence-unit p/ cd bd usado no projeto -->
+   
+        <properties>
+                <!-- especificando o driver do bd h2 -->
+                <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/> <!-- org.h2.Driver --> 
+        		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://database-1.cmblgshfej2r.us-east-2.rds.amazonaws.com:3306/"/><!-- jdbc:h2:mem:loja -->
+        		<property name="javax.persistence.jdbc.user" value="admin"/><!-- sa -->
+				<property name="javax.persistence.jdbc.password" value="H8NJJaUJkKm9Qv3"/><!-- vazio -->
+				<!-- propriedade especifica do hibernate. Dialect - particularidades do sgbd -->
+        		<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> -->
+        
+        </properties>
+    
+ 
+
+
+	</persistence-unit>
+
+
+</persistence>
