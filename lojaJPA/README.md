@@ -26,9 +26,18 @@
 		- validate : não mexe no banco, apenas valida se está tudo ok no banco e gera um log
 ### Entidade
 - classe que vai ser mapeada p/ uma tabela	
+- ciclo de vida:
+	- 
 
 ### DAO
 - código isolado responsavel pela persistência. Faz a ponte c/ o bd
 
 ### Mapeamento
 - enum: o valor gravado na tabela Produto é a ordem da constante do enum
+
+### Cardinalidade
+- quando existe um relacionamento entre entidades, vc é obrigado passar uma cardinalidade
+	- @ManyToOne : 
+- se estamos persistindo com uma entidade e vinculando com outra entidade, essa outra precisa estar persistida antes, ou receberemos uma exception "transiente property value excepetion".
+
+

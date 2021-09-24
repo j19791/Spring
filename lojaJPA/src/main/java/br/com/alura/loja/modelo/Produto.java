@@ -4,11 +4,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity //existe uma tabela no bd sendo mapeada por essa classe
@@ -25,7 +24,12 @@ public class Produto {
 	private BigDecimal preco;
 	private LocalDate dataCadastro = LocalDate.now();
 	
-	@Enumerated(EnumType.STRING) //para nao gravar o valor da ordem (1,2,3) e sim a constante na tabela produtos
+	//@Enumerated(EnumType.STRING) 	
+	//para nao gravar o valor da ordem (1,2,3) e sim a constante na tabela produtos
+	//usar enum é ruim- rocado por uma entidad
+	
+	//relacionamento entre duas entidades: passar a cardinalidade p/ o JPA
+	@ManyToOne //muitos produtos podem estar numa única categoria
 	private Categoria categoria;
 	
 	
