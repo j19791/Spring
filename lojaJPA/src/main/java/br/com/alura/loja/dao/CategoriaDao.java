@@ -22,4 +22,9 @@ public class CategoriaDao {
 		this.em.merge(categoria); //garante q categoria esta managed
 	}
 	
+	public void remover(Categoria categoria) {
+		categoria = this.em.merge(categoria); //garante q categoria esta managed
+		this.em.remove(categoria); 
+	}
+	
 }

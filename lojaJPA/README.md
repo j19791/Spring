@@ -27,7 +27,7 @@
 ### Entidade
 - classe que vai ser mapeada p/ uma tabela	
 - ciclo de vida:
-	- 
+![Ciclo de vida](/imagens/ciclo_de_vida.jpg)
 
 ### DAO
 - código isolado responsavel pela persistência. Faz a ponte c/ o bd
