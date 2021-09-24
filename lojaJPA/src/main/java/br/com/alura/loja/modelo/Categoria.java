@@ -16,6 +16,10 @@ public class Categoria {//enum é ruim (fixo no código)
 	private String nome;
 	
 	
+	//quando é usado o merge - o jpa briga o uso de construtor padrão
+	public Categoria() {
+		super();
+	}
 	public Categoria(String nome) {
 		super();
 		this.nome = nome;

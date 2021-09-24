@@ -34,9 +34,18 @@ public class CadastroDeProduto {
 		
 		dao.cadastrar(celular);
 		
-		em.getTransaction().commit(); //gera o insert no bd
+		em.flush(); //sincroniza c/ obd (grava idnex) mas nao commit
+		//em.getTransaction().commit(); //gera o insert no bd
+		em.clear();
 		
-		em.close();//DETACHED: Ja salvo no bd. nao esta mais gerenciado pela JPA
+		//em.close();//DETACHED: Ja salvo no bd. nao esta mais gerenciado pela JPA
+		
+		celulares = em.merge(celulares); //merge: devolve uma entidade p/ o estado managed
+		
+		celulares.setNome("1234");
+		
+		em.flush();
+		
 		
 	}
 	

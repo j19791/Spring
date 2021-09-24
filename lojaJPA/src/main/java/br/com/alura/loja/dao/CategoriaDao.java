@@ -18,4 +18,8 @@ public class CategoriaDao {
 		this.em.persist(categoria);
 	}
 	
+	public void atualizar(Categoria categoria) {
+		this.em.merge(categoria); //garante q categoria esta managed
+	}
+	
 }
