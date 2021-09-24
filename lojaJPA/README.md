@@ -27,5 +27,7 @@
 ### Entidade
 - classe que vai ser mapeada p/ uma tabela	
 
+### DAO
+- código isolado responsavel pela persistência. Faz a ponte c/ o bd
 
 
