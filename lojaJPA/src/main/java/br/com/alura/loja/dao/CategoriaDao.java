@@ -23,7 +23,7 @@ public class CategoriaDao {
 	}
 	
 	public void remover(Categoria categoria) {
-		categoria = this.em.merge(categoria); //garante q categoria esta managed
+		categoria = this.em.merge(categoria); //garante q categoria esta managed. SE estiver detached o em gera exception
 		this.em.remove(categoria); 
 	}
 	
