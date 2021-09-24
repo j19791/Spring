@@ -30,4 +30,5 @@
 ### DAO
 - código isolado responsavel pela persistência. Faz a ponte c/ o bd
 
-
+### Mapeamento
+- enum: o valor gravado na tabela Produto é a ordem da constante do enum
