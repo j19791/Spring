@@ -1,6 +1,7 @@
 package br.com.alura.loja.testes;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -14,6 +15,22 @@ public class CadastroDeProduto {
 
 	public static void main(String[] args) {
 		
+		cadastrarProduto();			
+
+		EntityManager em = JPAUtil.getEntityManager();		
+
+		ProdutoDao dao = new ProdutoDao(em);
+		
+		Produto p = dao.buscarPorId(1l);
+		System.out.println(p.getPreco());
+		
+		List<Produto> todos = dao.buscarTodos();
+		
+		todos.forEach(p2 -> System.out.println(p2.getNome()));
+		
+	}
+
+	private static void cadastrarProduto() {
 		Categoria celulares = new Categoria("celulares"); //estado Transient: nunca foi persistida (objeto Java puro). Em não esta gerenciando 
 		
 		Produto celular = new Produto("Xiami Redmi", "Muito legal", new BigDecimal("800") ,  celulares);
@@ -45,8 +62,6 @@ public class CadastroDeProduto {
 		celulares.setNome("1234");
 		
 		em.flush();
-		
-		
 	}
 	
 }
