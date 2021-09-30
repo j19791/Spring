@@ -31,4 +31,20 @@ public class ProdutoDao {
 				.getResultList();
 	}
 	
+	public List<Produto> buscarPorNome(String pnome){
+		String jpsql = "SELECT p FROM Produto p where p.nome = :nome  "; //carrega o objeto p s/ atributos. É a entidade não o nome da tabela no bd. No critério do where , usar o nome  dos atributos não das colunas 
+		return em.createQuery(jpsql, Produto.class) //apenas monta a query
+				.setParameter("nome", pnome) //named parameter				
+				.getResultList();
+	}
+	
+	public List<Produto> buscarPorNomeCategoria( String pcategoria){
+		String jpsql = "SELECT p FROM Produto p where p.categoria.nome = ?2 "; //o jpql faz o join automatico 
+		return em.createQuery(jpsql, Produto.class) 				
+				.setParameter(2, "CELULARES") 
+				.getResultList();
+	}
+	
+	
+	
 }
