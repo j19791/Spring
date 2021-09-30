@@ -40,4 +40,5 @@
 	- @ManyToOne : 
 - se estamos persistindo com uma entidade e vinculando com outra entidade, essa outra precisa estar persistida antes, ou receberemos uma exception "transiente property value excepetion".
 
-
+### JPQL
+- não passo o nome da tabela e sim da entidade
