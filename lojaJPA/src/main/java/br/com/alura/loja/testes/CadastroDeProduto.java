@@ -37,6 +37,13 @@ public class CadastroDeProduto {
 		todosPorCategoria.forEach(p2 -> System.out.println(p2.getNome()));
 		
 		
+
+		
+		
+		BigDecimal preco = dao.buscarPrecoDoProdutoPorNome("j5");
+		System.out.println(preco);
+		
+
 	}
 
 	private static void cadastrarProduto() {
@@ -70,7 +77,17 @@ public class CadastroDeProduto {
 		
 		celulares.setNome("1234");
 		
-		em.flush();
+		Categoria sp = new Categoria("SmartPhones");
+		new CategoriaDao(em).cadastrar(sp);
+		
+		Produto j5 = new Produto("j5", "meu celular",new BigDecimal(100), sp);
+		
+		dao.cadastrar(j5);
+		
+		em.getTransaction().commit();
+		
+		//em.flush();
+		
 	}
 	
 }

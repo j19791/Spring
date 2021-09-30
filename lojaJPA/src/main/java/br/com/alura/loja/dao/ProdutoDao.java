@@ -1,5 +1,6 @@
 package br.com.alura.loja.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -32,7 +33,8 @@ public class ProdutoDao {
 	}
 	
 	public List<Produto> buscarPorNome(String pnome){
-		String jpsql = "SELECT p FROM Produto p where p.nome = :nome  "; //carrega o objeto p s/ atributos. É a entidade não o nome da tabela no bd. No critério do where , usar o nome  dos atributos não das colunas 
+
+		String jpsql = "SELECT p FROM Produto p where p.nome = :nome  "; //carrega o objeto p inteiro s/ atributos. É a entidade não o nome da tabela no bd. No critério do where , usar o nome  dos atributos não das colunas 
 		return em.createQuery(jpsql, Produto.class) //apenas monta a query
 				.setParameter("nome", pnome) //named parameter				
 				.getResultList();
@@ -43,6 +45,13 @@ public class ProdutoDao {
 		return em.createQuery(jpsql, Produto.class) 				
 				.setParameter(2, "CELULARES") 
 				.getResultList();
+	}
+	
+	public BigDecimal buscarPrecoDoProdutoPorNome(String pnome){
+		String jpsql = "SELECT p.preco FROM Produto p where p.nome = :nome  "; //carrega a entidade c/ apenas atributo preco 
+		return em.createQuery(jpsql,BigDecimal.class) //apenas monta a query
+				.setParameter("nome", pnome) //named parameter				
+				.getSingleResult(); //retorna apenas 1 resultado
 	}
 	
 	
