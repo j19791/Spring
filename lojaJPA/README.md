@@ -36,6 +36,7 @@
 - enum: o valor gravado na tabela Produto é a ordem da constante do enum
 
 ### Cardinalidade
+![Relacionamentos](/lojaJPA/imagens/relacionamento_produto_cliente.jpg)
 - quando existe um relacionamento entre entidades, vc é obrigado passar uma cardinalidade
 	- @ManyToOne : 
 - se estamos persistindo com uma entidade e vinculando com outra entidade, essa outra precisa estar persistida antes, ou receberemos uma exception "transiente property value excepetion".
