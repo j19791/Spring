@@ -1,10 +1,12 @@
 package br.com.alura.loja.dao;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import br.com.alura.loja.modelo.Pedido;
+import br.com.alura.loja.vo.RelatorioDeVendasVo;
 
 public class PedidoDao {
 
@@ -36,6 +38,21 @@ public class PedidoDao {
 		return em.createQuery(jpql, BigDecimal.class)
 				.getSingleResult();
 		
+	}
+	
+	//preciso retornar 3 atributos de entidades diferentes
+	public List<RelatorioDeVendasVo> relatorioDeVendas() { //Vo = value Objects - classe que só tem atributos
+		String jpql = "select new br.com.alura.loja.vo.RelatorioDeVendasVo " //cria uma instancia dessa classe. (jpql só usa entidade e vo não é entidade) 
+				+ "(produto.nome, "
+				+ "sum(item.quantidade), "
+				+ "max(pedido.data)) " //passa p/ o construtor
+				+ "from Pedido pedido "
+				+ "join pedido.itens item "
+				+ "join item.produto produto "
+				+ "group by produto.nome "
+				+ "order by item.quantidade desc";
+		
+		return em.createQuery(jpql, RelatorioDeVendasVo.class).getResultList();
 	}
 	
 
