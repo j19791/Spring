@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +25,7 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private LocalDate data = LocalDate.now();
+	@Column(name="valor_total")
 	private BigDecimal valorTotal; //quando o atributo é separado por camelCase, a coluna é criada c/ _
 	
 	@ManyToOne
@@ -35,7 +38,8 @@ public class Pedido {
 	*/	
 	//no entanto, no nosso modelo é necessário mais informações como qtd de produtos e preco naquele momento q foi realizado o pedido. Se o preço do produto for reajustado, o preço naquele pedido não é reajustado
 	
-	@OneToMany(mappedBy = "pedido") //relacionamneto bidirecional: ja mapeado no ItemPedido. Para não criar uma segunda tabela de join
+	@OneToMany(mappedBy = "pedido", //relacionamneto bidirecional: ja mapeado no ItemPedido. Para não criar uma segunda tabela de join
+			cascade = CascadeType.ALL) //jpa salva pedido no bd e tbm insere 1 item de pedido respectivo ao pedido. Tudo q acontece c/ o pedido, tbm faz no itemPedido
 	private List<ItemPedido> itens = new ArrayList<>(); //boa prática iniciar c/ coleção vazia
 	
 	
