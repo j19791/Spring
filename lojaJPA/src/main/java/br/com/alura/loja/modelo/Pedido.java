@@ -2,6 +2,7 @@ package br.com.alura.loja.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -34,16 +35,20 @@ public class Pedido {
 	*/	
 	//no entanto, no nosso modelo é necessário mais informações como qtd de produtos e preco naquele momento q foi realizado o pedido. Se o preço do produto for reajustado, o preço naquele pedido não é reajustado
 	
-	@OneToMany
-	private List<ItemPedido> itens;
+	@OneToMany(mappedBy = "pedido") //relacionamneto bidirecional: ja mapeado no ItemPedido. Para não criar uma segunda tabela de join
+	private List<ItemPedido> itens = new ArrayList<>(); //boa prática iniciar c/ coleção vazia
 	
 	
 	
-	public Pedido(Cliente cliente) {
-	
-		
+	public Pedido(Cliente cliente) {	
 		this.cliente = cliente;
 	}
+	
+	public void adicionarItem(ItemPedido item) {
+		item.setPedido(this); //qdo adicionado um item novo, automaticmanente é passado o Pedido
+		this.itens.add(item);
+	}
+	
 
 	public Pedido() {
 	}

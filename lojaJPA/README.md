@@ -40,7 +40,7 @@
 - quando existe um relacionamento entre entidades, vc é obrigado passar uma cardinalidade
 	- @ManyToOne : 
 	- @ManyToMany: será criado uma tabela de join
-	- bidirecional
+	- bidirecional: quando duas entidades estão se mapeando: Pedido @OneToMany c/ ItemPedido @ManyToOne
 - se estamos persistindo com uma entidade e vinculando com outra entidade, essa outra precisa estar persistida antes, ou receberemos uma exception "transiente property value excepetion".
 - tabe
 
