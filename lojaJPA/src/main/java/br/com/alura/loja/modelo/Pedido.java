@@ -26,7 +26,7 @@ public class Pedido {
 	private Long id;
 	private LocalDate data = LocalDate.now();
 	@Column(name="valor_total")
-	private BigDecimal valorTotal; //quando o atributo é separado por camelCase, a coluna é criada c/ _
+	private BigDecimal valorTotal = BigDecimal.ZERO; //quando o atributo é separado por camelCase, a coluna é criada c/ _
 	
 	@ManyToOne
 	private Cliente cliente;
@@ -51,6 +51,7 @@ public class Pedido {
 	public void adicionarItem(ItemPedido item) {
 		item.setPedido(this); //qdo adicionado um item novo, automaticmanente é passado o Pedido
 		this.itens.add(item);
+		this.valorTotal = this.valorTotal.add(item.getValor());
 	}
 	
 

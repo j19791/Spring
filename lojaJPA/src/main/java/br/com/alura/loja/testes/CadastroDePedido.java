@@ -1,5 +1,7 @@
 package br.com.alura.loja.testes;
 
+import java.math.BigDecimal;
+
 import javax.persistence.EntityManager;
 
 import br.com.alura.loja.dao.ClienteDao;
@@ -36,6 +38,10 @@ public class CadastroDePedido {
 		pedidoDao.cadastrar(pedido);
 		
 		em.getTransaction().commit();
+		
+		
+		BigDecimal valorTotalVendido = pedidoDao.valorTotalVendido();
+		System.out.println("Valor total: " + valorTotalVendido);
 		
 		
 	}

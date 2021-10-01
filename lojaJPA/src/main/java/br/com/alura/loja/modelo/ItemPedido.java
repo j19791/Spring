@@ -66,5 +66,10 @@ public class ItemPedido {
 		this.produto = produto;
 		this.precoUnitario = produto.getPreco();
 	}
+
+	public BigDecimal getValor() {
+		// TODO Auto-generated method stub
+		return this.precoUnitario.multiply(new BigDecimal(quantidade));
+	}
 	
 }
