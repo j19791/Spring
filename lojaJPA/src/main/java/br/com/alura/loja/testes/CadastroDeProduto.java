@@ -30,7 +30,7 @@ public class CadastroDeProduto {
 		
 		todosPorNome.forEach(p2 -> System.out.println(p2.getNome()));
 		
-		List<Produto> todosPorCategoria = dao.buscarPorNomeCategoria("CELULARES");
+		List<Produto> todosPorCategoria = dao.buscarPorNomeCategoria("xpto");
 		
 		todosPorCategoria.forEach(p2 -> System.out.println(p2.getNome()));
 		
@@ -38,8 +38,8 @@ public class CadastroDeProduto {
 
 		
 		
-		BigDecimal preco = dao.buscarPrecoDoProdutoPorNome("j5");
-		System.out.println(preco);
+	//	BigDecimal preco = dao.buscarPrecoDoProdutoPorNome("j5");
+		//System.out.println(preco);
 		
 
 	}

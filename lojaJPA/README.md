@@ -49,3 +49,4 @@
 - não passo o nome da tabela e sim da entidade
 - o sql não é case sensitive mas o nome das entidades são
 - se a função de agregação não existe no bd (nativa de outro bd), o JPA lança exception  
+- named queries: as consultas ficam junto com as entidades

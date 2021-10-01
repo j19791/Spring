@@ -45,8 +45,8 @@ public class ProdutoDao {
 	}
 	
 	public List<Produto> buscarPorNomeCategoria( String pcategoria){
-		String jpsql = "SELECT p FROM Produto p where p.categoria.nome = ?2 "; //o jpql faz o join automatico 
-		return em.createQuery(jpsql, Produto.class) 				
+		//utilizando named queries 
+		return em.createNamedQuery("Produto.produtosPorCategoria", Produto.class) 				
 				.setParameter(2, "CELULARES") 
 				.getResultList();
 	}

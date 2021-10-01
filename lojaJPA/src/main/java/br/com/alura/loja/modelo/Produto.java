@@ -8,10 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity //existe uma tabela no bd sendo mapeada por essa classe
 @Table(name="produtos") //nome da tabela do bd
+@NamedQuery(name = "Produto.produtosPorCategoria", 
+query="SELECT p FROM Produto p where p.categoria.nome = ?2") //named queries - consutlas juntas com a entidade
 public class Produto {
 	
 	//atributos que vão ser mapeadas em coluna no bd
