@@ -55,7 +55,11 @@
 - Eager: carregamento antecipado. Faz um join c/ outras tabelas 
 	- existe um relacionamento @ManyToOne (ou @OneToOne) e tbm pode carregar dados desnecessariamente
 	- reduz perfomance
-	- incluir nas anotações @ManyToOne(fetch = FetchType.LAZY)
+	- incluir nas anotações @ManyToOne(fetch = FetchType.LAZY) p/ melhorar a perfomance
+	- efeito colateral : LazyInicializationException 
+		- quando o em é fechado e é necessário uma informação que não foi carregado anteriormente por uma consulta lazy 
+		- Query Planejada - evitar problema de LazyInicializationException - FETCH: nessa consulta, cliente vai vir junto APENAS NESSA CONSULTA (foi configurado na anotação lazy) 
 - Lazy: preguiçoso 
 	- @OneToMany 
 	- só carrega se for feito acesso
+	

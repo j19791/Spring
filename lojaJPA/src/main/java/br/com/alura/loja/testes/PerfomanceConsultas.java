@@ -21,7 +21,11 @@ public class PerfomanceConsultas {
 		popularBancoDeDados();
 		EntityManager em = JPAUtil.getEntityManager();
 		
-		Pedido pedido = em.find(Pedido.class, 1l);
+		Pedido pedido = em.find(Pedido.class, 1l);//é lazy pois foi configurado na anotação mas vai dar erro LazyInitializationException depois de fechar o em
+		
+		Pedido pedidoQP = new PedidoDao(em).buscarPedidoComCliente(1l);
+		
+		
 		System.out.println(pedido.getData()); //preciso apenas da data do pedido
 		//Eager: carregamento antecipado-pa faz um join c/ a tabela de cliente: existe um relacionamento @ManyToOne (ou @OneToOne) c/ cliente e carrega os clientes
 		//nao preciso carregar demais
@@ -30,6 +34,14 @@ public class PerfomanceConsultas {
 		System.out.println(pedido.getItens().size());
 		
 		//@OneToMany : lazy - preguiçoso - só carrega se for feito acesso
+		
+		//Efeitos colaterais
+		em.close();
+		
+		//System.out.println(pedido.getCliente().getNome());LazyInitializationException - s/ a query planejada - NAO HAVIA SIDO CARREGADO ANTES
+		
+		////Query Planejada
+		System.out.println(pedidoQP.getCliente().getNome()); 
 	}
 	
 	private static void popularBancoDeDados() {
