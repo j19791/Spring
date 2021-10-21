@@ -14,13 +14,14 @@
         		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://database-1.cmblgshfej2r.us-east-2.rds.amazonaws.com:3306/lojaJPA"/><!-- jdbc:h2:mem:loja -->
         		<property name="javax.persistence.jdbc.user" value="admin"/><!-- sa -->
 				<property name="javax.persistence.jdbc.password" value="H8NJJaUJkKm9Qv3"/><!-- vazio -->
-				<property name="hibernate.hbm2ddl.auto" value="update" /><!-- so adiciona tabelas e colunas novas -->
+				<property name="hibernate.hbm2ddl.auto" value="create" /><!-- so adiciona tabelas e colunas novas -->
 				
 				
 				<!-- propriedade especifica do hibernate. Dialect - particularidades do sgbd -->
         		<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> -->
         		<property name="hibernate.dialect" value="org.hibernate.dialect.MariaDB53Dialect" />
 				<property name="hibernate.show_sql" value="true"/><!-- imprime no console o q esta rodando no bd -->
+				<property name="hibernate.format_sql" value="true"/><!-- identar o codigo sql no console  -->
 				
 				
 				

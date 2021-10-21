@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Pedido {
 	@Column(name="valor_total")
 	private BigDecimal valorTotal = BigDecimal.ZERO; //quando o atributo é separado por camelCase, a coluna é criada c/ _
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY) //boa pratica - mudar os relacionamentos @ToOne p/ Lazy (preguiçoso) pois o padrão é EAGER (antecipado)
 	private Cliente cliente;
 	
 	/*
@@ -81,6 +82,14 @@ public class Pedido {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public List<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<ItemPedido> itens) {
+		this.itens = itens;
 	}
 	
 	

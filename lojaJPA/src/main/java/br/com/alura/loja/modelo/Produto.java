@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class Produto {
 	//usar enum é ruim- rocado por uma entidad
 	
 	//relacionamento entre duas entidades: passar a cardinalidade p/ o JPA
-	@ManyToOne //muitos produtos podem estar numa única categoria
+	@ManyToOne (fetch = FetchType.LAZY)//muitos produtos podem estar numa única categoria
 	private Categoria categoria;
 	
 	
