@@ -63,3 +63,16 @@
 	- @OneToMany 
 	- só carrega se for feito acesso
 	
+### Critéria API
+- utilzação de parametros flexíveis (opcionais) nas consultas
+
+### Embeddable
+- simplifica entidades
+
+### Mapeamento de Herança
+- SINGLE_TABLE
+- JOINED
+
+### Chaves Compostas 
+
+	
