@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -16,6 +18,8 @@ import javax.persistence.Table;
 @Table(name="produtos") //nome da tabela do bd
 @NamedQuery(name = "Produto.produtosPorCategoria", 
 query="SELECT p FROM Produto p where p.categoria.nome = ?2") //named queries - consutlas juntas com a entidade
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) //tabelao com as colunas das classes filhas
+//JOINED - CLASSES FIlhas com tabelas usando join para relacionar pai e filha
 public class Produto {
 	
 	//atributos que vão ser mapeadas em coluna no bd
