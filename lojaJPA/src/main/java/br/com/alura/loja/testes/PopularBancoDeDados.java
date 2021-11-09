@@ -17,55 +17,38 @@ public class PopularBancoDeDados {
 	 static void popularBancoDeDados() {
 		Categoria celulares = new Categoria("celulares"); //estado Transient: nunca foi persistida (objeto Java puro). Em não esta gerenciando 
 		
-		Produto celular = new Produto("Xiami Redmi", "Muito legal", new BigDecimal("800") ,  celulares);
-	
-		//a criação do EM foi isolada 
-		EntityManager em = JPAUtil.getEntityManager();		
+		Categoria videogames = new Categoria("VIDEOGAMES");
+		Categoria informatica = new Categoria("INFORMATICA");
 		
-		//transferido para a classe DAO
-		ProdutoDao dao = new ProdutoDao(em);
+		Produto celular = new Produto("Xiaomi Redmi", "Muito legal", new BigDecimal("800"), celulares);
+		Produto videogame = new Produto("PS5", "Playstation 5", new BigDecimal("8000"), videogames);
+		Produto macbook = new Produto("Macbook", "Macboo pro retina", new BigDecimal("14000"), informatica);
+		
+		Cliente cliente = new Cliente("Rodrigo", "123456");
+		
+		//a criação do EM foi isolada
+		EntityManager em = JPAUtil.getEntityManager();
+		ProdutoDao produtoDao = new ProdutoDao(em);
 		CategoriaDao categoriaDao = new CategoriaDao(em);
+		ClienteDao clienteDao = new ClienteDao(em);
+		
+		em.getTransaction().begin();
+		
+		categoriaDao.cadastrar(celulares);
+		categoriaDao.cadastrar(videogames);
+		categoriaDao.cadastrar(informatica);
+		
+		produtoDao.cadastrar(celular);
+		produtoDao.cadastrar(videogame);
+		produtoDao.cadastrar(macbook);
 		
 		//cliente tbm precisa ser salvo no bd antes de salvr o pedido
-		ClienteDao clienteDao = new ClienteDao(em);
-				
-		Cliente cliente = new Cliente("Rodrigo", "123456");
-				
-		
-		
-		em.getTransaction().begin(); //vc nao esta usando servidor de app - transaction-type="RESOURCE_LOCAL", s/ controle de transacao automatico
-		
-		//Transient Property Value Exception: antes de salvar o produto, eu preciso salvar a categoria antes:
-		categoriaDao.cadastrar(celulares); //estado MANAGED: QDO FOI PERSISTIDO - JPA observando -   -  pode sincronizar c/ o BD
-		celulares.setNome("xpto"); //MANAGED: se for realizado uma alteração no atributo via set, o JPA faz update no bd
-		
-		
-		dao.cadastrar(celular);
-		
 		clienteDao.cadastrar(cliente);
 		
-		//em.flush(); //sincroniza c/ obd (grava idnex) mas nao commit
-		em.getTransaction().commit(); //gera o insert no bd
-		//em.clear();
-		
-		//em.close();//DETACHED: Ja salvo no bd. nao esta mais gerenciado pela JPA
-		
-		/*
-		celulares = em.merge(celulares); //merge: devolve uma entidade p/ o estado managed
-		
-		celulares.setNome("1234");
-		
-		Categoria sp = new Categoria("SmartPhones");
-		new CategoriaDao(em).cadastrar(sp);
-		
-		Produto j5 = new Produto("j5", "meu celular",new BigDecimal(100), sp);
-		
-		dao.cadastrar(j5);
-		
 		em.getTransaction().commit();
+		em.close();
 		
-		//em.flush();
-		*/
+
 	}
 
 	
