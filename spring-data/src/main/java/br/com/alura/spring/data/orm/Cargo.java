@@ -14,6 +14,11 @@ public class Cargo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String descricao;
+	
+	@Override
+	public String toString() {
+		return "Cargo [id=" + id + ", descricao=" + descricao + "]";
+	}
 	public Integer getId() {
 		return id;
 	}
