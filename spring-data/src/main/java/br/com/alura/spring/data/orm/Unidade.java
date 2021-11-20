@@ -7,20 +7,22 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cargos")
-public class Cargo {
+@Table(name="unidades")
+public class Unidade {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private String descricao;
+	private String endereco;
 	
-	@OneToMany(mappedBy="cargo", fetch= FetchType.EAGER)
-	private List<Funcionario> funcionarios;
+    @ManyToMany(mappedBy = "unidades", fetch = FetchType.EAGER)
+    private List<Funcionario> funcionarios;
+	
 	
 	public List<Funcionario> getFuncionarios() {
 		return funcionarios;
@@ -28,14 +30,10 @@ public class Cargo {
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
-	@Override
-	public String toString() {
-		return "Cargo [id=" + id + ", descricao=" + descricao + "]";
-	}
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getDescricao() {
@@ -44,5 +42,18 @@ public class Cargo {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	public String getEndereço() {
+		return endereco;
+	}
+	public void setEndereço(String endereço) {
+		this.endereco = endereço;
+	}
+	@Override
+	public String toString() {
+		return "Unidade [id=" + id + ", descricao=" + descricao + ", endereço=" + endereco + ", funcionarios="
+				+ funcionarios + "]";
+	}
+	
+	
 	
 }
