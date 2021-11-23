@@ -1,5 +1,7 @@
 package br.com.alura.spring.data.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,7 +12,9 @@ import br.com.alura.spring.data.repository.FuncionarioRepository;
 
 @Service
 public class RelatoriosService {
-
+	
+	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	
 	private boolean system = true;
 	
 	private final FuncionarioRepository funcionarioRepository; 
@@ -25,6 +29,7 @@ public class RelatoriosService {
 			System.out.println("Qual acao do funcionario deseja executar?");
 			System.out.println("0-sair");
 			System.out.println("1-pesquisar");
+			System.out.println("2 - Busca funcionario nome, data contratacao e salario maior");
 			
 			
 			int action = scanner.nextInt();
@@ -33,7 +38,9 @@ public class RelatoriosService {
 			case 1:
 				buscaFuncionarioNome(scanner);
 				break;
-			
+			case 2:
+				buscaFuncionarioNomeSalarioMaiorData(scanner);
+				break;
 					
 			default:
 				system=false;
@@ -51,5 +58,21 @@ public class RelatoriosService {
 		List<Funcionario> list = funcionarioRepository.findByNome(nome);
 		list.forEach(System.out::println);
 				
+	}
+	
+	private void buscaFuncionarioNomeSalarioMaiorData(Scanner scanner) {
+		System.out.println("Qual nome deseja pesquisar");
+		String nome = scanner.next();
+		
+		System.out.println("Qual data contratacao deseja pesquisar");
+		String data = scanner.next();
+		LocalDate localDate = LocalDate.parse(data, formatter);
+		
+		System.out.println("Qual salario deseja pesquisar");
+		Double salario = scanner.nextDouble();
+		
+		List<Funcionario> list = funcionarioRepository
+				.findNomeSalarioMaiorDataContratacao(nome, salario, localDate);
+		list.forEach(System.out::println);
 	}
 }
