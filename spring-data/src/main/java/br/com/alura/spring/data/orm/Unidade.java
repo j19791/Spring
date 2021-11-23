@@ -50,9 +50,10 @@ public class Unidade {
 	}
 	@Override
 	public String toString() {
-		return "Unidade [id=" + id + ", descricao=" + descricao + ", endereço=" + endereco + ", funcionarios="
-				+ funcionarios + "]";
+		return "Unidade [id=" + id + ", descricao=" + descricao + ", endereco=" + endereco + "]";
 	}
+	
+	
 	
 	
 	

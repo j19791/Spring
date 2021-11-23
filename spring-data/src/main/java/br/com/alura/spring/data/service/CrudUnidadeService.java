@@ -53,13 +53,15 @@ public class CrudUnidadeService {
 	}
 	
 	private void salvar(Scanner scanner) {
-		System.out.println("Descricao da unidade");		 
+			 
 		
 		Unidade unidade = new Unidade();
 		
+		System.out.println("Descricao da unidade");	
 		String descricao = scanner.next();
 		unidade.setDescricao(descricao);
 		
+		System.out.println("Endereço da unidade");	
 		String endereco = scanner.next();
 		unidade.setEndereço(endereco);
 			
