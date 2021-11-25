@@ -14,9 +14,9 @@ public class SpecificationFuncionario {
 		
 	}
 	
-	public static Specification<Funcionario> cpf(String cpf){
+	public static Specification<Funcionario> CPF(String cpf){
 		return (root,criteriaQuery, criteriaBuilder) 
-				-> criteriaBuilder.equal(root.get("cpf"), cpf);
+				-> criteriaBuilder.equal(root.get("CPF"), cpf);
 		
 	}
 	

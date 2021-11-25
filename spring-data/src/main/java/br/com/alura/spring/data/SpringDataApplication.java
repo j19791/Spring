@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import br.com.alura.spring.data.service.CrudCargoService;
 import br.com.alura.spring.data.service.CrudFuncionarioService;
 import br.com.alura.spring.data.service.CrudUnidadeService;
+import br.com.alura.spring.data.service.RelatorioFuncionarioDinamico;
 import br.com.alura.spring.data.service.RelatoriosService;
 
 @SpringBootApplication //ao iniciar o Framework do Spring, ele percorra todas as anotações que temos dentro da nossa aplicação para executá-las
@@ -21,15 +22,18 @@ public class SpringDataApplication implements CommandLineRunner {
 	private final CrudFuncionarioService funcionarioService;
 	private final CrudUnidadeService unidadeService;
 	private final RelatoriosService relatoriosService;
+	private final RelatorioFuncionarioDinamico relatorioFuncionarioDinamico;
 	
 	public SpringDataApplication(CrudCargoService cargoService, 
 			CrudFuncionarioService funcionarioService,
 			CrudUnidadeService unidadeService,
-			RelatoriosService relatoriosService) {
+			RelatoriosService relatoriosService,
+			RelatorioFuncionarioDinamico relatorioFuncionarioDinamico) {
 		this.cargoService = cargoService;
 		this.funcionarioService = funcionarioService;
 		this.unidadeService = unidadeService;
 		this.relatoriosService = relatoriosService;
+		this.relatorioFuncionarioDinamico =  relatorioFuncionarioDinamico;
 	}
 	
 	public static void main(String[] args) {
@@ -64,9 +68,9 @@ public class SpringDataApplication implements CommandLineRunner {
 			case 4:
 				relatoriosService.inicial(scanner);
 				break;
-			/*case 5:
+			case 5:
 				relatorioFuncionarioDinamico.inicial(scanner);
-				break;*/
+				break;
 			default:
 				System.out.println("Finalizando");
 				system = false;

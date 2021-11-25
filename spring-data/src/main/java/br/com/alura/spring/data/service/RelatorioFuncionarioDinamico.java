@@ -60,7 +60,7 @@ public class RelatorioFuncionarioDinamico {
 		List<Funcionario> funcionarios = funcionarioRepository
 				.findAll(Specification.where(
 						SpecificationFuncionario.nome(nome))
-						.or(SpecificationFuncionario.cpf(cpf))
+						.or(SpecificationFuncionario.CPF(cpf))
 						.or(SpecificationFuncionario.salario(salario))
 						.or(SpecificationFuncionario.dataContratacao(dataContratacao))	
 					);
