@@ -29,3 +29,18 @@
 - biblioteca css
 - posiciona elementos da página de maneira responsiva
 - componentes
+
+### Injeção de depêndencias
+- quando uma classe (HomeController) depende de outra classe (um repositório), o Spring consegue descobrir e instanciar todas as dependências e entregar o objeto que o controller precisa
+- delegamos a responsabilidade de criar um objeto para o Spring
+- Para criar um repository é necessário uma conexão, da EntityManagerFactory, do EntityManager, etc. 
+- Isso não importa no nosso código, pois o Spring assume essa responsabilidade
+
+### Integração c/ Spring Data JPA
+- incluir as dependencias : Spring JPA e o driver do MariaDB
+- Configurar os dados da conexão pelo application.properties
+- criar uma interface, extender o JpaRepository e usar a anotação @Repository
+- um JPARepository já tem vários métodos implementados como findAll, save, delete ou findById
+- usamos a injeção de dependências p/ receber uma instância do repositório
+
+ 
