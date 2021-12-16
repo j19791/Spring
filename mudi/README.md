@@ -17,7 +17,9 @@
 
 ### O primeiro controller
 - @Controller: classe que responde uma requisição HTTP
+- @RequestMapping: define uma parte da rota
 - @GetMapping: Métodos que atendem requisições HTTP são chamados de action
+- @PostMapping: 
 
 ### Thymeleaf
 - usado no lugar do JSP pois nã introduz novas tags
@@ -43,4 +45,7 @@
 - um JPARepository já tem vários métodos implementados como findAll, save, delete ou findById
 - usamos a injeção de dependências p/ receber uma instância do repositório
 
- 
+ ### DTO
+ - padrão p/ receber dados da requisição HTTP
+ - o nome do input HTML precisa ser igual aos atributos (getter e setter) do DTO
+ - Web Parameter Tampering: falha de segurança. 
