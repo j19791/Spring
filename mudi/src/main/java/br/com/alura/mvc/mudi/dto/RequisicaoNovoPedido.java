@@ -1,14 +1,22 @@
 package br.com.alura.mvc.mudi.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import br.com.alura.mvc.mudi.model.Pedido;
 
 //atributos recebidos pela requisicao
 public class RequisicaoNovoPedido {
-
+	
+	@NotBlank //validação - não pode ser branco
 	private String nomeProduto; //nome do atributo e o valor do name dos inputs  form do componente html
+	
+	@NotBlank
 	private String urlProduto;
+	
+	@NotBlank
 	private String urlImagem;
 	private String descricao;
+	
 	public String getNomeProduto() {
 		return nomeProduto;
 	}
