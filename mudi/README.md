@@ -23,6 +23,7 @@
 
 ### Thymeleaf
 - usado no lugar do JSP pois nã introduz novas tags
+- templates:
 
 ### Bootstrap
 - importar:
