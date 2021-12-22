@@ -22,16 +22,16 @@ public class HomeController {//Gerenciada (criando instancias) pelo Spring
 	@Autowired 
 	private PedidoRepository pedidoRepository; //Spring disponibiliza uma instancia de PedidoRepository 
 	
-	@GetMapping
+	@GetMapping //usuario preenche uma requisição na barra de endereço do navegador: requisição tipo get
 	public String home(Model model) {		
 
 		
 		List<Pedido> pedidos = pedidoRepository.findAll();
 		
-		model.addAttribute("pedidos", pedidos);
+		model.addAttribute("pedidos", pedidos); //envia os pedidos recuperados para a view
 		
 		
-		return "home";
+		return "home"; //view
 	}
 	
 	
