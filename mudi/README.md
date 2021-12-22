@@ -24,6 +24,9 @@
 ### Thymeleaf
 - usado no lugar do JSP pois nã introduz novas tags
 - templates:
+- formatação:
+	- [Valores de moeda](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#numbers)
+	- [data](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#calendars) 
 
 ### Bootstrap
 - importar:
