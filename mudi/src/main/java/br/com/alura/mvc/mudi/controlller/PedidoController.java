@@ -38,7 +38,10 @@ public class PedidoController {
 		Pedido pedido = requisicao.toPedido();
 		
 		pedidoRepository.save(pedido);
-		return "redirect:/home";
+		//always redirect after post
+		return "redirect:/home"; //o Spring MVC executará o redirecionamento client-side. O spring devolve uma resposta HTTP para pedir uma nova requisição para a URL /home
+		//forward:/home redirecionamento server-side: o fluxo volta apenas para o Front-Controller do Spring MVC e ele chama a nova action. Continua dentro da mesma requisição HTTP
+		
 	}
 	
 	
