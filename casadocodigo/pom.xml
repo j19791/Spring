@@ -201,6 +201,13 @@
 			<version>9.4-1201-jdbc41</version>
 		</dependency>
 		
+		<!-- dependência  capaz de realizar  integração entre  aplicação Spring MVC e o ambinte de cloud da Amazon -->
+		<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-aws-context</artifactId>
+    <version>1.2.1.RELEASE</version>
+</dependency>
+		
 	</dependencies>
 		
 	<repositories>
