@@ -16,3 +16,9 @@
 	- tipo de acesso: Programmatic Access
 	- Attach existing policies directly e selecione a opção Amazon S3 Full Access
 	- fazer download do .csv c/ as credenciais que irão conter a chave de acesso e a chave de segredo para que possamos realizar a autenticação com a Amazon
+
+### Criando classe de configuração
+- incluir a dependência spring-cloud-aws-context	
+
+### Alterando a classe FileSaver
+
