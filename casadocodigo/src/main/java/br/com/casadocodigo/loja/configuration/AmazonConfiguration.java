@@ -15,10 +15,10 @@ public class AmazonConfiguration {
 
 	
 	//dados do usuario criado pelo IAM
-	private static final String ACCESS_KEY="AKIAYYK3N653YKGAFDH3"; 
-	private static final String SECRET_KEY="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";
+	private static final String ACCESS_KEY=""; 
+	private static final String SECRET_KEY="";
 	
-	private static final String REGION="us-east-2"; //que o bucket foi criado
+	private static final String REGION=""; //que o bucket foi criado
 	
 	
 	//método que retorna um obj que ira realizar a implementação de autenticação c/ a aws
